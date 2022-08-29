@@ -1,2 +1,2 @@
 # kickstart
-It contain my kickstart submissions.
+It contain my Google kickstart submissions.
