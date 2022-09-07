@@ -15,15 +15,15 @@ ll solve(){
     ll a, b, n, k;
     cin>>a>>b>>n>>k;
     vector<ll> cnts(k);
-    for(int i =1; i<=min(n, k);i++){
-        ll num = ((n-i)/k+1)%M;
-        ll modp = modpow(i, b, k);
+    for(int i =1; i<=min(n, k);i++){ // loop from i to k
+        ll num = ((n-i)/k+1)%M; // find multiples of i upto N
+        ll modp = modpow(i, b, k); // remainder for i^b % K
         cnts[modp] = (cnts[modp]+num)%M;
     }
     ll res = 0;
     for(int i =1; i<=min(n, k); i++) {
-        ll num = ((n-i)/k+1)%M;
-        ll targmod = (k-modpow(i, a, k))%k;
+        ll num = ((n-i)/k+1)%M; //find multiples of i upto N
+        ll targmod = (k-modpow(i, a, k))%k; //equals to -i^A mod K
         res+=(cnts[targmod]*num)%M;
         if (modpow(i, b, k)==targmod)
             res+=M-num;
